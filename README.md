@@ -41,3 +41,6 @@ This project demonstrates an end-to-end data analysis workflow using Python, SQL
 ## Outcome
 
 Demonstrates skills in data cleaning, SQL analysis, and data visualization.
+
+<img width="1653" height="925" alt="Screenshot Thumbnail" src="https://github.com/user-attachments/assets/e2c4adcf-89d5-4256-9849-7f3b18cf16a5" />
+
