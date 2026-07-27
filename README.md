@@ -1,46 +1,50 @@
-# 📊 Sales Data Analysis Project
+# Sales Data Analysis Project
 
-## Overview
+An end-to-end analytics-engineering workflow that transforms a raw Superstore
+extract into a dimensional SQLite warehouse and reproducible KPI exports.
 
-This project demonstrates an end-to-end data analysis workflow using Python, SQL, and Power BI. The goal is to transform raw sales data into meaningful business insights.
+## Architecture
 
-## Tools Used
+```text
+data/raw/superstore.csv
+        |
+        v
+schema + type validation
+        |
+        v
+dimensions (customer, product, geography, date)
+        |
+        v
+fact_sales -> SQL analytics -> output CSV reports
+```
 
-* Python (Pandas)
-* SQL (SQLite)
-* Power BI
+## Run
 
-## Workflow
+```bash
+pip install -r requirements.txt
+python pipeline.py
+```
 
-1. Loaded raw sales data
-2. Cleaned and transformed using Python
-3. Stored data in SQLite
-4. Performed SQL analysis
-5. Created Power BI dashboard
+The pipeline creates `warehouse/sales.db` and exports regional and category
+performance reports under `output/`.
 
-## Key Insights
+```bash
+python -m unittest discover -s tests -v
+```
 
-* Technology category generated highest sales
-* West region performed best
-* Some products generated losses
-* Consumer segment contributed most revenue
+## Skills demonstrated
 
-## Project Structure
+- Raw-to-curated transformation with explicit schema checks
+- Star-schema construction and surrogate keys
+- Idempotent warehouse builds
+- SQL-based business metrics
+- Automated testing and GitHub Actions
 
-* data/raw → raw dataset
-* data/processed → cleaned data
-* notebooks → Python code
-* sql → SQL queries
-* dashboard → Power BI file
-* images → dashboard screenshot
+The dataset is a public sample used for portfolio demonstration. This project
+does not include a fabricated Power BI file; every committed artifact is
+runnable or inspectable.
 
-## Dashboard Preview
+## Production roadmap
 
-(Add screenshot here)
-
-## Outcome
-
-Demonstrates skills in data cleaning, SQL analysis, and data visualization.
-
-<img width="1653" height="925" alt="Screenshot Thumbnail" src="https://github.com/user-attachments/assets/e2c4adcf-89d5-4256-9849-7f3b18cf16a5" />
-
+Add incremental loads, slowly changing dimensions, dbt models, orchestration,
+warehouse-native tests, and a governed BI semantic layer.
